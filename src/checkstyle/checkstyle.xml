@@ -24,8 +24,7 @@
 		<module name="com.puppycrawl.tools.checkstyle.checks.annotation.MissingOverrideCheck"/>
 		<module name="com.puppycrawl.tools.checkstyle.checks.annotation.PackageAnnotationCheck"/>
 		<module name="com.puppycrawl.tools.checkstyle.checks.annotation.AnnotationLocationCheck">
-			<property name="allowSamelineSingleParameterlessAnnotation"
-				value="false"/>
+			<property name="allowSamelineSingleParameterlessAnnotation" value="false"/>
 		</module>
 
 		<!-- Block Checks -->
@@ -79,7 +78,7 @@
 		<module name="io.spring.javaformat.checkstyle.filter.IdentCheckFilter">
 			<property name="names" value="logger"/>
 			<module
-				name="com.puppycrawl.tools.checkstyle.checks.coding.RequireThisCheck">
+					name="com.puppycrawl.tools.checkstyle.checks.coding.RequireThisCheck">
 				<property name="checkMethods" value="false"/>
 				<property name="validateOnlyOverlapping" value="false"/>
 			</module>
@@ -106,7 +105,7 @@
 			<property name="id" value="bannedImports"/>
 			<property name="regexp" value="true"/>
 			<property name="illegalClasses"
-				value="^reactor\.core\.support\.Assert,^org\.slf4j\.LoggerFactory,^(?!org\.springframework).*(NonNull|Nonnull|NonNullApi|NonNullFields|Nullable)$"/>
+					  value="^reactor\.core\.support\.Assert,^org\.slf4j\.LoggerFactory,^(?!org\.springframework).*(NonNull|Nonnull|NonNullApi|NonNullFields|Nullable)$"/>
 		</module>
 		<module name="com.puppycrawl.tools.checkstyle.checks.imports.IllegalImportCheck">
 			<property name="id" value="bannedJUnit3Imports"/>
@@ -117,7 +116,7 @@
 			<property name="id" value="bannedJUnit4Imports"/>
 			<property name="regexp" value="true"/>
 			<property name="illegalClasses"
-				value="^org\.junit\.(Test|BeforeClass|AfterClass|Before|After|Ignore|FixMethodOrder|Rule|ClassRule|Assert|Assume)$,^org\.junit\.(Assert|Assume)\..+,^org\.junit\.(experimental|internal|matchers|rules|runner|runners|validator)\..+"/>
+					  value="^org\.junit\.(Test|BeforeClass|AfterClass|Before|After|Ignore|FixMethodOrder|Rule|ClassRule|Assert|Assume)$,^org\.junit\.(Assert|Assume)\..+,^org\.junit\.(experimental|internal|matchers|rules|runner|runners|validator)\..+"/>
 		</module>
 		<module name="com.puppycrawl.tools.checkstyle.checks.imports.IllegalImportCheck">
 			<property name="id" value="bannedJUnitJupiterImports"/>
@@ -180,7 +179,7 @@
 		<module name="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck">
 			<property name="format" value="^\t* +\t*\S"/>
 			<property name="message"
-				value="Line has leading space characters; indentation should be performed with tabs only."/>
+					  value="Line has leading space characters; indentation should be performed with tabs only."/>
 			<property name="ignoreComments" value="true"/>
 		</module>
 		<module name="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpCheck">
@@ -189,12 +188,12 @@
 			<property name="message" value="Trailing whitespace"/>
 		</module>
 		<module
-			name="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck">
+				name="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck">
 			<property name="maximum" value="0"/>
 			<property name="format"
-				value="assertThatExceptionOfType\((NullPointerException|IllegalArgumentException|IOException|IllegalStateException)\.class\)"/>
+					  value="assertThatExceptionOfType\((NullPointerException|IllegalArgumentException|IOException|IllegalStateException)\.class\)"/>
 			<property name="message"
-				value="Please use specialized AssertJ assertThat*Exception method."/>
+					  value="Please use specialized AssertJ assertThat*Exception method."/>
 			<property name="ignoreComments" value="true"/>
 		</module>
 		<module name="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck">
@@ -244,7 +243,7 @@
  	</module>
 
 	<module name="BeforeExecutionExclusionFileFilter">
-		<property name="fileNamePattern" value="^.*\\spring\-research\\.*$"/>
+		<property name="fileNamePattern" value="^.*[\\/]spring\-research[\\/].*$"/>
 	</module>
 
 </module>

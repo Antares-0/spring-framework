@@ -22,9 +22,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public final class Main {
 
-	private Main() {
-
-	}
 
 	public static void main(String[] args) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");

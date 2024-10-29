@@ -13,4 +13,7 @@
 		<property name="optional" value="true"/>
 	</module>
 	<module name="SuppressWithPlainTextCommentFilter"/>
+	<module name="BeforeExecutionExclusionFileFilter">
+		<property name="fileNamePattern" value="^.*[\\/]spring\-research[\\/].*$"/>
+	</module>
 </module>
