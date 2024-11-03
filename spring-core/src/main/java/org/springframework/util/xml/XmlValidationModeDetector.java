@@ -97,9 +97,11 @@ public class XmlValidationModeDetector {
 			String content;
 			while ((content = reader.readLine()) != null) {
 				content = consumeCommentTokens(content);
+				// 如果这一行没有文本，是空行，跳过
 				if (!StringUtils.hasText(content)) {
 					continue;
 				}
+				// 看这一行有没有 DOCTYPE 字符串，因为XML的验证格式目前只有两个 XSD 和 DTD
 				if (hasDoctype(content)) {
 					isDtdValidated = true;
 					break;
@@ -148,6 +150,7 @@ public class XmlValidationModeDetector {
 	 * <p>This method takes the current "in comment" parsing state into account.
 	 */
 	private String consumeCommentTokens(String line) {
+		// START_COMMENT 是注释的开始
 		int indexOfStartComment = line.indexOf(START_COMMENT);
 		if (indexOfStartComment == -1 && !line.contains(END_COMMENT)) {
 			return line;

@@ -61,6 +61,8 @@ public abstract class BeanDefinitionReaderUtils {
 		bd.setParentName(parentName);
 		if (className != null) {
 			if (classLoader != null) {
+				// 传入的classLoader不是空，则使用传入的classLoader加载类对象
+				// 本质是使用反射的Class.forName加载相应的类
 				bd.setBeanClass(ClassUtils.forName(className, classLoader));
 			}
 			else {

@@ -250,15 +250,18 @@ public abstract class ClassUtils {
 	 * @throws LinkageError if the class file could not be loaded
 	 * @see Class#forName(String, boolean, ClassLoader)
 	 */
+	// 本质上就是通过类的全限定类名获取相应的class文件
 	public static Class<?> forName(String name, @Nullable ClassLoader classLoader)
 			throws ClassNotFoundException, LinkageError {
 
 		Assert.notNull(name, "Name must not be null");
 
+		// 解析className
 		Class<?> clazz = resolvePrimitiveClassName(name);
 		if (clazz == null) {
 			clazz = commonClassCache.get(name);
 		}
+		// 加载过了，直接返回
 		if (clazz != null) {
 			return clazz;
 		}
@@ -284,12 +287,13 @@ public abstract class ClassUtils {
 			return Array.newInstance(elementClass, 0).getClass();
 		}
 
-		ClassLoader clToUse = classLoader;
-		if (clToUse == null) {
-			clToUse = getDefaultClassLoader();
+		ClassLoader classLoaderToUse = classLoader;
+		if (classLoaderToUse == null) {
+			classLoaderToUse = getDefaultClassLoader();
 		}
 		try {
-			return Class.forName(name, false, clToUse);
+			// 实际上就是Class.forName去加载一个class文件，就是反射的基本机制
+			return Class.forName(name, false, classLoaderToUse);
 		}
 		catch (ClassNotFoundException ex) {
 			int lastDotIndex = name.lastIndexOf(PACKAGE_SEPARATOR);
@@ -297,7 +301,7 @@ public abstract class ClassUtils {
 				String nestedClassName =
 						name.substring(0, lastDotIndex) + NESTED_CLASS_SEPARATOR + name.substring(lastDotIndex + 1);
 				try {
-					return Class.forName(nestedClassName, false, clToUse);
+					return Class.forName(nestedClassName, false, classLoaderToUse);
 				}
 				catch (ClassNotFoundException ex2) {
 					// Swallow - let original exception get through

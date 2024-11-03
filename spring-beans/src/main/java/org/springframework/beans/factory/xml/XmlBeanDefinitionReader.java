@@ -323,6 +323,8 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
 			logger.trace("Loading XML bean definitions from " + encodedResource);
 		}
 
+		// resourcesCurrentlyBeingLoaded是一个ThreadLocal<Set<EncodedResource>>变量，从里面取出一个HashSet
+		// 用于记录已经加载过的
 		Set<EncodedResource> currentResources = this.resourcesCurrentlyBeingLoaded.get();
 
 		if (!currentResources.add(encodedResource)) {
@@ -387,6 +389,7 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
 			throws BeanDefinitionStoreException {
 
 		try {
+			// 将输入的 xml 文件转化为 Document，其中有确定xml的验证模式、也有验证xml的文件源的加载
 			Document doc = doLoadDocument(inputSource, resource);
 			int count = registerBeanDefinitions(doc, resource);
 			if (logger.isDebugEnabled()) {
@@ -506,8 +509,11 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
 	 * @see BeanDefinitionDocumentReader#registerBeanDefinitions
 	 */
 	public int registerBeanDefinitions(Document doc, Resource resource) throws BeanDefinitionStoreException {
+		// 实例化一个Reader
 		BeanDefinitionDocumentReader documentReader = createBeanDefinitionDocumentReader();
+		// 之前加载过的数量
 		int countBefore = getRegistry().getBeanDefinitionCount();
+		// 加载bean的关键方法
 		documentReader.registerBeanDefinitions(doc, createReaderContext(resource));
 		return getRegistry().getBeanDefinitionCount() - countBefore;
 	}
