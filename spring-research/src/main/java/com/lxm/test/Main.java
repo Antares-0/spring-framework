@@ -16,6 +16,7 @@
 
 package com.lxm.test;
 
+import com.lxm.test.bean.GetBeanTest;
 import com.lxm.test.bean.Person;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -23,8 +24,13 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public final class Main {
 
 	public static void main(String[] args) {
+		// test 1 检查程序是否可以运行
+		// ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
+		// Person person = context.getBean(Person.class);
+		// System.out.println(person);
+		// test 2 测试look-up标签
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
-		Person person = context.getBean(Person.class);
-		System.out.println(person);
+		GetBeanTest getBeanTest = (GetBeanTest) context.getBean("getBeanTest");
+		getBeanTest.printInfo();
 	}
 }

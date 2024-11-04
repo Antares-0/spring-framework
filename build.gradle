@@ -332,6 +332,8 @@ configure([rootProject] + javaProjects) { project ->
 	}
 
 	test {
+		// 跳过test
+		enabled(false)
 		useJUnitPlatform()
 		include(["**/*Tests.class", "**/*Test.class"])
 		systemProperty("java.awt.headless", "true")

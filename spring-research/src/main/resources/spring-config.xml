@@ -6,4 +6,12 @@
 		<property name="name" value="王"/>
 		<property name="age" value="18"/>
 	</bean>
+
+	<bean id="getBeanTest" class="com.lxm.test.bean.GetBeanTest">
+		<lookup-method name="getBean" bean="teacher"></lookup-method>
+	</bean>
+
+	<bean id="teacher" class="com.lxm.test.bean.Teacher"></bean>
+
+
 </beans>

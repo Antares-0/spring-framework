@@ -534,9 +534,7 @@ public class BeanDefinitionParserDelegate {
 			// bd.setBeanClass(ClassUtils.forName(className, classLoader));
 			// bd.setBeanClassName(className);
 			AbstractBeanDefinition bd = createBeanDefinition(className, parent);
-
-			// 关键方法之一，解析了bean上配置的所有属性，包括scope、懒加载、abstract属性等
-			// 到这个方法，处理了 <bean> 上的所有属性
+			// 关键方法之一，处理了 <bean> 上的所有属性，包括scope、懒加载、abstract属性等
 			parseBeanDefinitionAttributes(ele, beanName, containingBean, bd);
 			// 获取描述
 			bd.setDescription(DomUtils.getChildElementValueByTagName(ele, DESCRIPTION_ELEMENT));
@@ -548,7 +546,9 @@ public class BeanDefinitionParserDelegate {
 			// </bean>
 			// 通过meta标签可以指定Bean的作用域、代理模式等元数据信息
 			// attributeAccessor.addMetadataAttribute(attribute);
+			// 处理meta标签信息
 			parseMetaElements(ele, bd);
+			//
 			parseLookupOverrideSubElements(ele, bd.getMethodOverrides());
 			parseReplacedMethodSubElements(ele, bd.getMethodOverrides());
 
