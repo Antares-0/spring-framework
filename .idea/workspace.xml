@@ -4,43 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c0aabac-5b20-4aaa-a7fb-c0610e81aab2" name="Changes" comment="bean的标签解析过程">
-      <change afterPath="$PROJECT_DIR$/spring-research/src/main/java/com/lxm/test/bean/GetBeanTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-research/src/main/java/com/lxm/test/bean/Student.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-research/src/main/java/com/lxm/test/bean/Teacher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-research/src/main/java/com/lxm/test/bean/User.java" afterDir="false" />
+    <list default="true" id="5c0aabac-5b20-4aaa-a7fb-c0610e81aab2" name="Changes" comment="update JDK to 11">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/.gradle/7.5.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/.gradle/7.5.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/.gradle/7.5.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/.gradle/7.5.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/build/classes/java/main/org/springframework/build/api/ApiDiffPlugin.class" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/classes/java/main/org/springframework/build/api/ApiDiffPlugin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/build/classes/java/main/org/springframework/build/compile/CompilerConventionsPlugin.class" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/classes/java/main/org/springframework/build/compile/CompilerConventionsPlugin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/build/classes/java/main/org/springframework/build/optional/OptionalDependenciesPlugin.class" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/classes/java/main/org/springframework/build/optional/OptionalDependenciesPlugin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/build/libs/buildSrc.jar" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/libs/buildSrc.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/factory/xml/BeanDefinitionParserDelegate.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/factory/xml/BeanDefinitionParserDelegate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/core/CoroutinesUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/core/CoroutinesUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-research/src/main/java/com/lxm/test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-research/src/main/java/com/lxm/test/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-research/src/main/resources/spring-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-research/src/main/resources/spring-config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-test/test-output/Command line suite/Command line test.html" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/test-output/Command line suite/Command line test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-test/test-output/Command line suite/Command line test.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/test-output/Command line suite/Command line test.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-test/test-output/emailable-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/test-output/emailable-report.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-test/test-output/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/test-output/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-test/test-output/junitreports/TEST-org.springframework.test.context.cache.ClassLevelDirtiesContextTestNGTests$ClassLevelDirtiesContextWithAfterEachTestMethodModeTestCase.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/test-output/junitreports/TEST-org.springframework.test.context.cache.ClassLevelDirtiesContextTestNGTests$ClassLevelDirtiesContextWithAfterEachTestMethodModeTestCase.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-test/test-output/junitreports/TEST-org.springframework.test.context.cache.ClassLevelDirtiesContextTestNGTests$ClassLevelDirtiesContextWithCleanMethodsAndAfterClassModeTestCase.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/test-output/junitreports/TEST-org.springframework.test.context.cache.ClassLevelDirtiesContextTestNGTests$ClassLevelDirtiesContextWithCleanMethodsAndAfterClassModeTestCase.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-test/test-output/junitreports/TEST-org.springframework.test.context.cache.ClassLevelDirtiesContextTestNGTests$ClassLevelDirtiesContextWithCleanMethodsAndDefaultModeTestCase.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/test-output/junitreports/TEST-org.springframework.test.context.cache.ClassLevelDirtiesContextTestNGTests$ClassLevelDirtiesContextWithCleanMethodsAndDefaultModeTestCase.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-test/test-output/junitreports/TEST-org.springframework.test.context.cache.ClassLevelDirtiesContextTestNGTests$ClassLevelDirtiesContextWithDirtyMethodsTestCase.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/test-output/junitreports/TEST-org.springframework.test.context.cache.ClassLevelDirtiesContextTestNGTests$ClassLevelDirtiesContextWithDirtyMethodsTestCase.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-test/test-output/junitreports/TEST-org.springframework.test.context.cache.ClassLevelDirtiesContextTestNGTests$CleanTestCase.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/test-output/junitreports/TEST-org.springframework.test.context.cache.ClassLevelDirtiesContextTestNGTests$CleanTestCase.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-test/test-output/junitreports/TEST-org.springframework.test.context.cache.ClassLevelDirtiesContextTestNGTests$InheritedClassLevelDirtiesContextWithAfterEachTestMethodModeTestCase.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/test-output/junitreports/TEST-org.springframework.test.context.cache.ClassLevelDirtiesContextTestNGTests$InheritedClassLevelDirtiesContextWithAfterEachTestMethodModeTestCase.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-test/test-output/junitreports/TEST-org.springframework.test.context.cache.ClassLevelDirtiesContextTestNGTests$InheritedClassLevelDirtiesContextWithCleanMethodsAndAfterClassModeTestCase.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/test-output/junitreports/TEST-org.springframework.test.context.cache.ClassLevelDirtiesContextTestNGTests$InheritedClassLevelDirtiesContextWithCleanMethodsAndAfterClassModeTestCase.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-test/test-output/junitreports/TEST-org.springframework.test.context.cache.ClassLevelDirtiesContextTestNGTests$InheritedClassLevelDirtiesContextWithCleanMethodsAndDefaultModeTestCase.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/test-output/junitreports/TEST-org.springframework.test.context.cache.ClassLevelDirtiesContextTestNGTests$InheritedClassLevelDirtiesContextWithCleanMethodsAndDefaultModeTestCase.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-test/test-output/junitreports/TEST-org.springframework.test.context.cache.ClassLevelDirtiesContextTestNGTests$InheritedClassLevelDirtiesContextWithDirtyMethodsTestCase.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/test-output/junitreports/TEST-org.springframework.test.context.cache.ClassLevelDirtiesContextTestNGTests$InheritedClassLevelDirtiesContextWithDirtyMethodsTestCase.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-test/test-output/old/Command line suite/methods-alphabetical.html" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/test-output/old/Command line suite/methods-alphabetical.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-test/test-output/old/Command line suite/methods.html" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/test-output/old/Command line suite/methods.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-test/test-output/old/Command line suite/testng.xml.html" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/test-output/old/Command line suite/testng.xml.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-test/test-output/testng-results.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/test-output/testng-results.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,25 +58,25 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "aspect.path.notification.shown": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.41149426",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;aspect.path.notification.shown&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.41149426&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Application.Main">
+}</component>
+  <component name="RunManager" selected="Gradle.spring-framework [clean]">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.lxm.test.Main" />
       <module name="spring.spring-research.main" />
@@ -214,9 +180,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.spring-framework [clean]" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Gradle.spring-framework [build]" />
-        <item itemvalue="Gradle.spring-framework [clean]" />
         <item itemvalue="Gradle.spring-framework [dependencies]" />
         <item itemvalue="Gradle.spring-framework [test]" />
       </list>
@@ -232,7 +198,8 @@
       <updated>1730222685077</updated>
       <workItem from="1730222686674" duration="3124000" />
       <workItem from="1730225819837" duration="8175000" />
-      <workItem from="1730393941605" duration="24370000" />
+      <workItem from="1730393941605" duration="27549000" />
+      <workItem from="1731134256574" duration="4268000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -298,7 +265,23 @@
       <option name="project" value="LOCAL" />
       <updated>1730652729240</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="update JDK to 11">
+      <option name="closed" value="true" />
+      <created>1730739597552</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1730739597552</updated>
+    </task>
+    <task id="LOCAL-00010" summary="update JDK to 11">
+      <option name="closed" value="true" />
+      <created>1730739618823</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1730739618823</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -322,7 +305,8 @@
     <MESSAGE value="init" />
     <MESSAGE value="checkstyle文件更新" />
     <MESSAGE value="bean的标签解析过程" />
-    <option name="LAST_COMMIT_MESSAGE" value="bean的标签解析过程" />
+    <MESSAGE value="update JDK to 11" />
+    <option name="LAST_COMMIT_MESSAGE" value="update JDK to 11" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -349,7 +333,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/factory/xml/BeanDefinitionParserDelegate.java</url>
-          <line>677</line>
+          <line>669</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -359,13 +343,28 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/factory/xml/BeanDefinitionParserDelegate.java</url>
-          <line>446</line>
+          <line>445</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/factory/xml/BeanDefinitionParserDelegate.java</url>
-          <line>549</line>
+          <line>546</line>
           <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/factory/xml/BeanDefinitionParserDelegate.java</url>
+          <line>548</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/factory/xml/BeanDefinitionParserDelegate.java</url>
+          <line>550</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/factory/xml/BeanDefinitionParserDelegate.java</url>
+          <line>552</line>
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/factory/xml/DefaultBeanDefinitionDocumentReader.java</url>
@@ -378,7 +377,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/factory/xml/BeanDefinitionParserDelegate.java</url>
-          <line>586</line>
+          <line>581</line>
           <properties class="org.springframework.beans.factory.xml.BeanDefinitionParserDelegate" method="parseBeanDefinitionAttributes">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -387,7 +386,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/factory/xml/BeanDefinitionParserDelegate.java</url>
-          <line>403</line>
+          <line>402</line>
           <properties class="org.springframework.beans.factory.xml.BeanDefinitionParserDelegate" method="parseBeanDefinitionElement">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -396,7 +395,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/factory/xml/BeanDefinitionParserDelegate.java</url>
-          <line>674</line>
+          <line>666</line>
           <properties class="org.springframework.beans.factory.xml.BeanDefinitionParserDelegate" method="createBeanDefinition">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -414,7 +413,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/factory/xml/BeanDefinitionParserDelegate.java</url>
-          <line>413</line>
+          <line>412</line>
           <properties class="org.springframework.beans.factory.xml.BeanDefinitionParserDelegate" method="parseBeanDefinitionElement">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -422,13 +421,22 @@
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/spring-research/src/main/java/com/lxm/test/Main.java</url>
-          <line>25</line>
-          <properties class="com.lxm.test.Main" method="main">
+          <url>file://$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/factory/xml/BeanDefinitionParserDelegate.java</url>
+          <line>773</line>
+          <properties class="org.springframework.beans.factory.xml.BeanDefinitionParserDelegate" method="parseLookupOverrideSubElements">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
-          <option name="timeStamp" value="18" />
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/factory/xml/BeanDefinitionParserDelegate.java</url>
+          <line>719</line>
+          <properties class="org.springframework.beans.factory.xml.BeanDefinitionParserDelegate" method="parseConstructorArgElements">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
