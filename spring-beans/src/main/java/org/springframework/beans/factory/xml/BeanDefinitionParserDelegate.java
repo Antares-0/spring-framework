@@ -444,6 +444,8 @@ public class BeanDefinitionParserDelegate {
 
 		// 目前 containingBean == null
 		AbstractBeanDefinition beanDefinition = parseBeanDefinitionElement(ele, beanName, containingBean);
+		// 经过上述的加载，beanDefinition中已经包含了全部的xml信息
+
 		if (beanDefinition != null) {
 			if (!StringUtils.hasText(beanName)) {
 				try {
@@ -524,6 +526,9 @@ public class BeanDefinitionParserDelegate {
 		}
 
 		try {
+			/**
+			 * AbstractBeanDefinition记录了从XML文件中解析得到的全部信息
+			 **/
 			// 创建一个承载属性的AbstractBeanDefinition类型的GenericBeanDefinition
 			// GenericBeanDefinition用于承载bean的属性，是bean标签的Spring内部化表示
 			// className就是class的全限定类名
@@ -551,7 +556,10 @@ public class BeanDefinitionParserDelegate {
 			parseReplacedMethodSubElements(ele, bd.getMethodOverrides());
 			// 处理constructor-arg信息，该标签实际上是初始化过程中默认赋值
 			parseConstructorArgElements(ele, bd);
+			// 处理property信息
 			parsePropertyElements(ele, bd);
+			// 处理qualifier信息
+			// qualifier信息的作用是，决定Spring在自动转配的时候选择哪个Bean进行Autowired
 			parseQualifierElements(ele, bd);
 
 			bd.setResource(this.readerContext.getResource());
@@ -832,6 +840,7 @@ public class BeanDefinitionParserDelegate {
 		String indexAttr = ele.getAttribute(INDEX_ATTRIBUTE);
 		String typeAttr = ele.getAttribute(TYPE_ATTRIBUTE);
 		String nameAttr = ele.getAttribute(NAME_ATTRIBUTE);
+		// 如果配置中指定了index属性
 		if (StringUtils.hasLength(indexAttr)) {
 			try {
 				int index = Integer.parseInt(indexAttr);
@@ -864,6 +873,7 @@ public class BeanDefinitionParserDelegate {
 				error("Attribute 'index' of tag 'constructor-arg' must be an integer", ele);
 			}
 		} else {
+			// 如果没有指定index属性
 			try {
 				this.parseState.push(new ConstructorArgumentEntry());
 				Object value = parsePropertyValue(ele, bd, null);
@@ -1444,6 +1454,7 @@ public class BeanDefinitionParserDelegate {
 
 		// Decorate based on custom attributes first.
 		NamedNodeMap attributes = ele.getAttributes();
+		// 遍历所有的属性，看看是否有适用于修饰的属性
 		for (int i = 0; i < attributes.getLength(); i++) {
 			Node node = attributes.item(i);
 			finalDefinition = decorateIfRequired(node, finalDefinition, containingBd);
@@ -1451,6 +1462,7 @@ public class BeanDefinitionParserDelegate {
 
 		// Decorate based on custom nested elements.
 		NodeList children = ele.getChildNodes();
+		// 遍历所有的子节点，看看是否有适用于修饰的子元素
 		for (int i = 0; i < children.getLength(); i++) {
 			Node node = children.item(i);
 			if (node.getNodeType() == Node.ELEMENT_NODE) {
