@@ -1416,15 +1416,20 @@ public class BeanDefinitionParserDelegate {
 	 */
 	@Nullable
 	public BeanDefinition parseCustomElement(Element ele, @Nullable BeanDefinition containingBd) {
+		// 命名空间通常通过xmlns属性来声明
+		// xmlns:myname="http://www.lexueba.com/schema/user"
+		// <myname:user id="testbean" userName="aaa" email="bbb"/>
 		String namespaceUri = getNamespaceURI(ele);
 		if (namespaceUri == null) {
 			return null;
 		}
+		// 获取解析器
 		NamespaceHandler handler = this.readerContext.getNamespaceHandlerResolver().resolve(namespaceUri);
 		if (handler == null) {
 			error("Unable to locate Spring NamespaceHandler for XML schema namespace [" + namespaceUri + "]", ele);
 			return null;
 		}
+		// 解析
 		return handler.parse(ele, new ParserContext(this.readerContext, this, containingBd));
 	}
 
