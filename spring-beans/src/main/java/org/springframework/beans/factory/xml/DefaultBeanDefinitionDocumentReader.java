@@ -179,9 +179,11 @@ public class DefaultBeanDefinitionDocumentReader implements BeanDefinitionDocume
 				if (node instanceof Element) {
 					Element ele = (Element) node;
 					if (delegate.isDefaultNamespace(ele)) {
+						// 默认标签的解析行为
 						parseDefaultElement(ele, delegate);
 					}
 					else {
+						// 自定义标签的解析行为
 						delegate.parseCustomElement(ele);
 					}
 				}
