@@ -92,6 +92,11 @@ public interface FactoryBean<T> {
 	 * @throws Exception in case of creation errors
 	 * @see FactoryBeanNotInitializedException
 	 */
+	// 如果一个类实现了FactoryBean接口，必须重写这个方法
+	// class CarFactoryBean implements FactoryBean
+	// <bean id="car" class="com.test.lxm.CarFactoryBean" carInfo="A,AA,AAA">
+	// 如果一个bean标签的class实现了FactoryBean
+	// 那么Spring在getBean的时候就会使用CarFactoryBean中定义的getObject方法来拦截Spring原生的创建Bean过程
 	@Nullable
 	T getObject() throws Exception;
 

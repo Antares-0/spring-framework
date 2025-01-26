@@ -172,6 +172,7 @@ public class DefaultBeanDefinitionDocumentReader implements BeanDefinitionDocume
 		//		<property name="name" value="王"/>
 		//		<property name="age" value="18"/>
 		//	</bean>
+		// 判断是是不是 默认的名称空间： BEANS_NAMESPACE_URI
 		if (delegate.isDefaultNamespace(root)) {
 			NodeList nl = root.getChildNodes();
 			for (int i = 0; i < nl.getLength(); i++) {
@@ -197,7 +198,7 @@ public class DefaultBeanDefinitionDocumentReader implements BeanDefinitionDocume
 	private void parseDefaultElement(Element ele, BeanDefinitionParserDelegate delegate) {
 		// <import resource="applicationContext-datasource.xml" />
 		// 引入其他的资源，对import标签的处理
-		// import标签的含义就是
+		// import标签的含义就是“引入了新包”，模块化地管理bean
 		if (delegate.nodeNameEquals(ele, IMPORT_ELEMENT)) {
 			importBeanDefinitionResource(ele);
 		}
@@ -205,7 +206,7 @@ public class DefaultBeanDefinitionDocumentReader implements BeanDefinitionDocume
 		else if (delegate.nodeNameEquals(ele, ALIAS_ELEMENT)) {
 			processAliasRegistration(ele);
 		}
-		// 对Bean标签的处理
+		// 对Bean标签的处理 重要
 		else if (delegate.nodeNameEquals(ele, BEAN_ELEMENT)) {
 			processBeanDefinition(ele, delegate);
 		}
@@ -320,11 +321,15 @@ public class DefaultBeanDefinitionDocumentReader implements BeanDefinitionDocume
 	 * and registering it with the registry.
 	 */
 	protected void processBeanDefinition(Element ele, BeanDefinitionParserDelegate delegate) {
+		// 三板斧：解析、装饰、注册
+		// 1. 解析：将xml文件中的所有信息包装到对应的bdHolder中
+		// 2. 装饰：如果一个Bean中有自定义的标签，就装饰一下（相当于在Spring原版上装饰）
+		// 3. 注册：将beanDefinition放入Map中
 		// class name id alias等内容已经组装好了
 		// 【解析】将xml文件解析的结果封装在BeanDefinitionHolder中
 		BeanDefinitionHolder bdHolder = delegate.parseBeanDefinitionElement(ele);
 		if (bdHolder != null) {
-			// 【装饰】如果需要的话，对bdHolder进行装饰
+			// 【装饰】如果需要的话，对bdHolder进行装饰 mybean：自定义标签
 			// <bean id='test' class='test.MyClass'>
 			//     <mybean:user username='aaa'/>
 			// </bean>

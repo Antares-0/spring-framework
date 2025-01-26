@@ -212,6 +212,8 @@ public class SimpleAliasRegistry implements AliasRegistry {
 		String canonicalName = name;
 		// Handle aliasing...
 		String resolvedName;
+		// 注意这里是一个循环
+		// 如果别名A指向别名B，别名B指向别名C，别名C指向真实的D，那就会依次执行来找到正确的对象
 		do {
 			resolvedName = this.aliasMap.get(canonicalName);
 			if (resolvedName != null) {

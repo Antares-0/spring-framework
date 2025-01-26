@@ -529,7 +529,7 @@ public class BeanDefinitionParserDelegate {
 			/**
 			 * AbstractBeanDefinition记录了从XML文件中解析得到的全部信息
 			 **/
-			// 创建一个承载属性的AbstractBeanDefinition类型的GenericBeanDefinition
+			// 创建一个承载属性的AbstractBeanDefinition类型的GenericBeanDefinition，记录bean的所有属性
 			// GenericBeanDefinition用于承载bean的属性，是bean标签的Spring内部化表示
 			// className就是class的全限定类名
 			// setBeanClass or setBeanClassName
@@ -537,6 +537,7 @@ public class BeanDefinitionParserDelegate {
 			// bd.setBeanClassName(className);
 			AbstractBeanDefinition bd = createBeanDefinition(className, parent);
 			// 关键方法之一，处理了 <bean> 上的所有属性，包括scope、懒加载、abstract属性等
+			// 将bean的属性分装给bd，bd.set()
 			parseBeanDefinitionAttributes(ele, beanName, containingBean, bd);
 			// 获取描述
 			bd.setDescription(DomUtils.getChildElementValueByTagName(ele, DESCRIPTION_ELEMENT));
@@ -548,7 +549,11 @@ public class BeanDefinitionParserDelegate {
 			// </bean>
 			// 通过meta标签可以指定Bean的作用域、代理模式等元数据信息
 			// attributeAccessor.addMetadataAttribute(attribute);
-			// 处理meta标签信息
+			// 处理meta标签信息 meta标签的作用：当需要里面的值的时候，可以通过meta标签获取
+			// meta标签没有什么实际的意义 ，相当于预设了一个Map
+			// <bean id = "myTestBean" class="bean.MyTestBean">
+			//     <meta key="testStr" value="aaaaa">
+			// </bean>
 			parseMetaElements(ele, bd);
 			// 处理lookup method信息，该标签指定了某些方法的返回值
 			parseLookupOverrideSubElements(ele, bd.getMethodOverrides());
@@ -556,9 +561,9 @@ public class BeanDefinitionParserDelegate {
 			parseReplacedMethodSubElements(ele, bd.getMethodOverrides());
 			// 处理constructor-arg信息，该标签实际上是初始化过程中默认赋值
 			parseConstructorArgElements(ele, bd);
-			// 处理property信息
+			// 处理property信息 （新增属性）
 			parsePropertyElements(ele, bd);
-			// 处理qualifier信息
+			// 处理qualifier信息 当存在多个同一类型的bean时，可以通过该属性唯一指定
 			// qualifier信息的作用是，决定Spring在自动转配的时候选择哪个Bean进行Autowired
 			parseQualifierElements(ele, bd);
 
@@ -693,6 +698,7 @@ public class BeanDefinitionParserDelegate {
 				String value = metaElement.getAttribute(VALUE_ATTRIBUTE);
 				BeanMetadataAttribute attribute = new BeanMetadataAttribute(key, value);
 				attribute.setSource(extractSource(metaElement));
+				// 在Map中添加元素
 				attributeAccessor.addMetadataAttribute(attribute);
 			}
 		}
@@ -1489,8 +1495,11 @@ public class BeanDefinitionParserDelegate {
 	public BeanDefinitionHolder decorateIfRequired(
 			Node node, BeanDefinitionHolder originalDef, @Nullable BeanDefinition containingBd) {
 
+		// 获取自定义标签的命名空间
 		String namespaceUri = getNamespaceURI(node);
+		// 对于非默认标签进行修饰
 		if (namespaceUri != null && !isDefaultNamespace(namespaceUri)) {
+			// 找到对应的Handler进行处理
 			NamespaceHandler handler = this.readerContext.getNamespaceHandlerResolver().resolve(namespaceUri);
 			if (handler != null) {
 				BeanDefinitionHolder decorated =

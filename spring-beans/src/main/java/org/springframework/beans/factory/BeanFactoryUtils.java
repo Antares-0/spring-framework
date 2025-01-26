@@ -79,6 +79,7 @@ public abstract class BeanFactoryUtils {
 	 * @see BeanFactory#FACTORY_BEAN_PREFIX
 	 */
 	public static String transformedBeanName(String name) {
+		// 去掉beanName的修饰符，name = "&aa"
 		Assert.notNull(name, "'name' must not be null");
 		if (!name.startsWith(BeanFactory.FACTORY_BEAN_PREFIX)) {
 			return name;
