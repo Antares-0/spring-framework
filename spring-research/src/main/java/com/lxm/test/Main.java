@@ -17,11 +17,7 @@
 package com.lxm.test;
 
 import com.lxm.test.bean.GetBeanTest;
-import com.lxm.test.bean.Person;
-
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 
 public final class Main {
 

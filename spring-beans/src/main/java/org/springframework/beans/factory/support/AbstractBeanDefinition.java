@@ -1131,7 +1131,9 @@ public abstract class AbstractBeanDefinition extends BeanMetadataAttributeAccess
 	public void prepareMethodOverrides() throws BeanDefinitionValidationException {
 		// Check that lookup methods exist and determine their overloaded status.
 		// lookup methods exist
+		// 如果有覆盖
 		if (hasMethodOverrides()) {
+			// 针对每个要覆盖的，检查一下prepareMethodOverride
 			getMethodOverrides().getOverrides().forEach(this::prepareMethodOverride);
 		}
 	}
@@ -1150,6 +1152,8 @@ public abstract class AbstractBeanDefinition extends BeanMetadataAttributeAccess
 					"Invalid method override: no method with name '" + mo.getMethodName() +
 					"' on class [" + getBeanClassName() + "]");
 		}
+		// 如果当前类中的方法只有一个，也就意味着不存在 getA(String a) getA(int a)这种需要进行参数匹配验证的方法了
+		// 因此降低了参数匹配验证的开销（其实这个并不难理解）
 		else if (count == 1) {
 			// Mark override as not overloaded, to avoid the overhead of arg type checking.
 			mo.setOverloaded(false);

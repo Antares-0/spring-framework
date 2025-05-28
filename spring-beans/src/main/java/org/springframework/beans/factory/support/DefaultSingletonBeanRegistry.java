@@ -216,6 +216,7 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 	public Object getSingleton(String beanName, ObjectFactory<?> singletonFactory) {
 		Assert.notNull(beanName, "Bean name must not be null");
 		synchronized (this.singletonObjects) {
+			// 检查缓存中是否存在实例
 			Object singletonObject = this.singletonObjects.get(beanName);
 			if (singletonObject == null) {
 				if (this.singletonsCurrentlyInDestruction) {
@@ -226,7 +227,7 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 				if (logger.isDebugEnabled()) {
 					logger.debug("Creating shared instance of singleton bean '" + beanName + "'");
 				}
-				// 创建之前
+				// 创建之前，检查并将该beanName放到正在创建的集合中
 				beforeSingletonCreation(beanName);
 				boolean newSingleton = false;
 				boolean recordSuppressedExceptions = (this.suppressedExceptions == null);
@@ -234,7 +235,9 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 					this.suppressedExceptions = new LinkedHashSet<>();
 				}
 				try {
-					// getObject，初始化Bean
+					// getObject
+					// 所以，真实的创建对象依赖的是外部传入的singletonFactory中的getObject方法
+					// 因此我们需要跳到方法的外层跟踪getObject方法
 					singletonObject = singletonFactory.getObject();
 					newSingleton = true;
 				}
@@ -258,10 +261,11 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 					if (recordSuppressedExceptions) {
 						this.suppressedExceptions = null;
 					}
-					// 创建之后
+					// 创建之后的后处理，包括将beanName从正在创建的集合中移除
 					afterSingletonCreation(beanName);
 				}
 				if (newSingleton) {
+					// 将对象加入缓存
 					addSingleton(beanName, singletonObject);
 				}
 			}
@@ -356,6 +360,7 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 	 * @see #isSingletonCurrentlyInCreation
 	 */
 	protected void beforeSingletonCreation(String beanName) {
+		// this.singletonsCurrentlyInCreation.add(beanName) 将当前要创建的bean记录在缓存中
 		if (!this.inCreationCheckExclusions.contains(beanName) && !this.singletonsCurrentlyInCreation.add(beanName)) {
 			throw new BeanCurrentlyInCreationException(beanName);
 		}

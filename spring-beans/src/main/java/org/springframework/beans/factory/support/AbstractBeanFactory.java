@@ -1886,6 +1886,8 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 
 		// Don't let calling code try to dereference the factory if the bean isn't a factory.
 		// FactoryBean对象的获取，name前面要加上一个"&" 例如"&user"
+		// 之前说到，如果bean标签中配置的是class='com.test.factorybean.FactoryBean'类型的
+		// 那么就调用实现类中的getObject方法，此处是一个判断
 		if (BeanFactoryUtils.isFactoryDereference(name)) {
 			if (beanInstance instanceof NullBean) {
 				return beanInstance;
@@ -1907,13 +1909,16 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 			return beanInstance;
 		}
 
+        // 到这里，肯定是FactoryBean类型的bean了，因此就是调用实现类中的getObject方法实现
 		Object object = null;
 		if (mbd != null) {
 			mbd.isFactoryBean = true;
 		}
 		else {
+			// 先从缓存中获取
 			object = getCachedObjectForFactoryBean(beanName);
 		}
+		// 缓存没有命中
 		if (object == null) {
 			// Return bean instance from factory.
 			FactoryBean<?> factory = (FactoryBean<?>) beanInstance;
@@ -1921,6 +1926,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 			if (mbd == null && containsBeanDefinition(beanName)) {
 				mbd = getMergedLocalBeanDefinition(beanName);
 			}
+			// 是否是用户自定义的，而不是应用程序本身定义的【尚不清楚】
 			boolean synthetic = (mbd != null && mbd.isSynthetic());
 			// 从FactoryBean的角度创建对象
 			object = getObjectFromFactoryBean(factory, beanName, !synthetic);
