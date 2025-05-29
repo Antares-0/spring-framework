@@ -57,12 +57,17 @@ public class SimpleInstantiationStrategy implements InstantiationStrategy {
 	}
 
 
+	// 实例化方法
 	@Override
 	public Object instantiate(RootBeanDefinition bd, @Nullable String beanName, BeanFactory owner) {
 		// Don't override the class with CGLIB if no overrides.
+		// 如果没有需要覆盖或者动态替换的方法，就用反射直接实现
+		// 如果有需要动态替换的方法，就直接调用cglib进行实现
 		if (!bd.hasMethodOverrides()) {
+			// 直接用反射的方式实现构造对象
 			Constructor<?> constructorToUse;
 			synchronized (bd.constructorArgumentLock) {
+				// 找到对应的构造器
 				constructorToUse = (Constructor<?>) bd.resolvedConstructorOrFactoryMethod;
 				if (constructorToUse == null) {
 					final Class<?> clazz = bd.getBeanClass();
@@ -87,7 +92,9 @@ public class SimpleInstantiationStrategy implements InstantiationStrategy {
 			return BeanUtils.instantiateClass(constructorToUse);
 		}
 		else {
+			// 使用CGLib动态代理实现
 			// Must generate CGLIB subclass.
+			// CglibSubclassingInstantiationStrategy.instantiate
 			return instantiateWithMethodInjection(bd, beanName, owner);
 		}
 	}
