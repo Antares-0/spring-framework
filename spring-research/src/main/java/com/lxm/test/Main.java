@@ -16,6 +16,7 @@
 
 package com.lxm.test;
 
+import com.lxm.test.aop.TestBean;
 import com.lxm.test.bean.GetBeanTest;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -27,8 +28,17 @@ public final class Main {
 		// Person person = context.getBean(Person.class);
 		// System.out.println(person);
 		// test 2 测试look-up标签
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
-		GetBeanTest getBeanTest = (GetBeanTest) context.getBean("getBeanTest");
-		getBeanTest.printInfo();
+//		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
+//		GetBeanTest getBeanTest = (GetBeanTest) context.getBean("getBeanTest");
+//		getBeanTest.printInfo();
+
+
+
+		// aspectTest.xml
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("aspectTest.xml");
+		TestBean test = (TestBean) context.getBean("test");
+		test.test();
+
+
 	}
 }

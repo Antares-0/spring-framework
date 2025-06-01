@@ -94,11 +94,13 @@ class ApplicationContextAwareProcessor implements BeanPostProcessor {
 
 		if (acc != null) {
 			AccessController.doPrivileged((PrivilegedAction<Object>) () -> {
+				// 根据bean的类型，做初始化
 				invokeAwareInterfaces(bean);
 				return null;
 			}, acc);
 		}
 		else {
+			// 根据bean的类型，做初始化
 			invokeAwareInterfaces(bean);
 		}
 

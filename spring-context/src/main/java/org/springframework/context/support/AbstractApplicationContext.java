@@ -552,13 +552,23 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 
 	@Override
 	public void refresh() throws BeansException, IllegalStateException {
+		// 概览：
+		// 1. 初始化前的准备工作
+		// 2. 初始化BeanFactory
+		// 3. 对BeanFactory进行各种功能填充
+		// 4. 子类覆盖方法做额外的处理
+		// 5. 激活各种BeanFactory处理器
+		// 6. 注册拦截bean创建的bean处理器
+		// 7. 为上下文初始化Message源
 		synchronized (this.startupShutdownMonitor) {
 			StartupStep contextRefresh = this.applicationStartup.start("spring.context.refresh");
 
 			// Prepare this context for refreshing.
+			// 环境准备的校验
 			prepareRefresh();
 
 			// Tell the subclass to refresh the internal bean factory.
+			// 加载BeanFactory
 			ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory();
 
 			// Prepare the bean factory for use in this context.
@@ -676,7 +686,9 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	 * @see #getBeanFactory()
 	 */
 	protected ConfigurableListableBeanFactory obtainFreshBeanFactory() {
+		// 初始化，把原来存在的beanFactory消灭
 		refreshBeanFactory();
+		// 返回当前实体的beanFactory
 		return getBeanFactory();
 	}
 
@@ -687,14 +699,45 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	 */
 	protected void prepareBeanFactory(ConfigurableListableBeanFactory beanFactory) {
 		// Tell the internal bean factory to use the context's class loader etc.
+		// 设置classLoader
 		beanFactory.setBeanClassLoader(getClassLoader());
 		if (!shouldIgnoreSpel) {
+			// 可以使用#{bean.name}的形式调用相关属性的值
+			// 增加了对spel语言的支持
+			// <bean> <property name="a" value="#{b}"/> <bean/>
 			beanFactory.setBeanExpressionResolver(new StandardBeanExpressionResolver(beanFactory.getBeanClassLoader()));
 		}
+		// 增加一些自定义编辑器
+		// 功能：Spring提供了自定义属性的解析功能
+		// 举例：
+		// <bean id="userManager" class="com.lxm.userManager">
+		//     <property name="dataValue">
+		//         <value>2023-10-09</value>
+		//     </property>
+		// </bean>
+		// 可以配置自定义的属性解析器，来实现将 String 转换成 Date 的格式
+		// 实现：
+		// 1. 代码中编写自定义解析器
+		// 一个方法，用于将String转为Date
+		// 2. Spring配置文件中写明
+		// <bean class="org.Springframework.beans.factory.config.CustomEditorConfigurer">
+		//     <property name="customEditors">
+		//         <map>
+		//             <entry key="java.util.Date">
+		//                 <bean class="com.test.DatePropertyEditor>
+		//                     <property name="format" value="yyyy-MM-dd"/>
+		//                 </bean>
+		//             </entry>
+		//         </map>
+		//     </property>
+		// </bean>
+		// 加入属性编辑器 将String转成需要的格式
 		beanFactory.addPropertyEditorRegistrar(new ResourceEditorRegistrar(this, getEnvironment()));
 
 		// Configure the bean factory with context callbacks.
+		// 主要的逻辑在这里 ApplicationContextAwareProcessor
 		beanFactory.addBeanPostProcessor(new ApplicationContextAwareProcessor(this));
+		// 有一些接口是忽略自动装配的
 		beanFactory.ignoreDependencyInterface(EnvironmentAware.class);
 		beanFactory.ignoreDependencyInterface(EmbeddedValueResolverAware.class);
 		beanFactory.ignoreDependencyInterface(ResourceLoaderAware.class);
@@ -705,6 +748,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 
 		// BeanFactory interface not registered as resolvable type in a plain factory.
 		// MessageSource registered (and found for autowiring) as a bean.
+		// 设置装配的特殊规则
 		beanFactory.registerResolvableDependency(BeanFactory.class, beanFactory);
 		beanFactory.registerResolvableDependency(ResourceLoader.class, this);
 		beanFactory.registerResolvableDependency(ApplicationEventPublisher.class, this);

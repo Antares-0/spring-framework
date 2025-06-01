@@ -123,8 +123,10 @@ public class ReflectiveAspectJAdvisorFactory extends AbstractAspectJAdvisorFacto
 
 	@Override
 	public List<Advisor> getAdvisors(MetadataAwareAspectInstanceFactory aspectInstanceFactory) {
+		// 获取标记为AspectJ的类
 		Class<?> aspectClass = aspectInstanceFactory.getAspectMetadata().getAspectClass();
 		String aspectName = aspectInstanceFactory.getAspectMetadata().getAspectName();
+		// 验证
 		validate(aspectClass);
 
 		// We need to wrap the MetadataAwareAspectInstanceFactory with a decorator
@@ -133,16 +135,10 @@ public class ReflectiveAspectJAdvisorFactory extends AbstractAspectJAdvisorFacto
 				new LazySingletonAspectInstanceFactoryDecorator(aspectInstanceFactory);
 
 		List<Advisor> advisors = new ArrayList<>();
+		// 根据被Aspect注解修饰的类，遍历里面的方法
 		for (Method method : getAdvisorMethods(aspectClass)) {
 			if (method.equals(ClassUtils.getMostSpecificMethod(method, aspectClass))) {
-				// Prior to Spring Framework 5.2.7, advisors.size() was supplied as the declarationOrderInAspect
-				// to getAdvisor(...) to represent the "current position" in the declared methods list.
-				// However, since Java 7 the "current position" is not valid since the JDK no longer
-				// returns declared methods in the order in which they are declared in the source code.
-				// Thus, we now hard code the declarationOrderInAspect to 0 for all advice methods
-				// discovered via reflection in order to support reliable advice ordering across JVM launches.
-				// Specifically, a value of 0 aligns with the default value used in
-				// AspectJPrecedenceComparator.getAspectDeclarationOrder(Advisor).
+				// 获取对应的增强器
 				Advisor advisor = getAdvisor(method, lazySingletonAspectInstanceFactory, 0, aspectName);
 				if (advisor != null) {
 					advisors.add(advisor);
@@ -207,6 +203,7 @@ public class ReflectiveAspectJAdvisorFactory extends AbstractAspectJAdvisorFacto
 
 		validate(aspectInstanceFactory.getAspectMetadata().getAspectClass());
 
+		// 切点信息
 		AspectJExpressionPointcut expressionPointcut = getPointcut(
 				candidateAdviceMethod, aspectInstanceFactory.getAspectMetadata().getAspectClass());
 		if (expressionPointcut == null) {
@@ -225,6 +222,7 @@ public class ReflectiveAspectJAdvisorFactory extends AbstractAspectJAdvisorFacto
 		}
 	}
 
+	// 例如：@Before("test()") --> 解析
 	@Nullable
 	private AspectJExpressionPointcut getPointcut(Method candidateAdviceMethod, Class<?> candidateAspectClass) {
 		AspectJAnnotation<?> aspectJAnnotation =

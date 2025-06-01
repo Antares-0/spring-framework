@@ -100,6 +100,7 @@ public class ResourceEditorRegistrar implements PropertyEditorRegistrar {
 	 */
 	@Override
 	public void registerCustomEditors(PropertyEditorRegistry registry) {
+		// 注册了一些常见的属性编辑器
 		ResourceEditor baseEditor = new ResourceEditor(this.resourceLoader, this.propertyResolver);
 		doRegisterEditor(registry, Resource.class, baseEditor);
 		doRegisterEditor(registry, ContextResource.class, baseEditor);
@@ -113,6 +114,7 @@ public class ResourceEditorRegistrar implements PropertyEditorRegistrar {
 
 		ClassLoader classLoader = this.resourceLoader.getClassLoader();
 		doRegisterEditor(registry, URI.class, new URIEditor(classLoader));
+		// 将String描述的class类型转换为对应的class类型并进行赋值
 		doRegisterEditor(registry, Class.class, new ClassEditor(classLoader));
 		doRegisterEditor(registry, Class[].class, new ClassArrayEditor(classLoader));
 
